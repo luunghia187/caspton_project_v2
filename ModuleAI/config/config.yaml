@@ -1,0 +1,14 @@
+# Configuration settings for the Insurance Fraud Detection project
+app:
+  debug: true
+  port: 5000
+
+model:
+  model_path: ../models/fraud_detection_model.pkl
+
+data:
+  processed_data_path: ../data/processed_data.csv
+
+logging:
+  log_file: logs/app.log
+  log_level: INFO

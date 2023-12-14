@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prediction App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      form {
+        width: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid #222;
+        padding: 14px;
+        margin-bottom: 20px;
+        margin-left: 37%;
+      }
+
+      input[type="text"] {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      h2 {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Insurance Claim Prediction</h1>
+    <form action="/predict" method="POST">
+      <!-- Input fields for features -->
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" /><br /><br />
+
+      <label for="policy_deductable">Policy Deductable:</label>
+      <input
+        type="text"
+        id="policy_deductable"
+        name="policy_deductable"
+      /><br /><br />
+      <label for="age_at_incident">Age at Incident: (The Age at Incident is the date from policy bind data to the incident date)</label>
+      <input
+        type="text"
+        id="age_at_incident"
+        name="age_at_incident"
+      /><br /><br />
+
+      <label for="incident_month">Incident Month:</label>
+      <input
+        type="text"
+        id="incident_month"
+        name="incident_month"
+      /><br /><br />
+
+      <label for="incident_year">Incident Year:</label>
+      <input type="text" id="incident_year" name="incident_year" /><br /><br />
+      <input type="submit" value="Predict" />
+    </form>
+    {% if prediction %}
+    <p style="text-align: center;">{{ prediction }}</p>
+    <!-- Display the prediction here -->
+    {% endif %}
+    <script>
+      // Get references to the input fields and the form
+      const form = document.querySelector("form");
+      const ageInput = document.getElementById("age");
+      const policyDeductableInput = document.getElementById("policy_deductable");
+      const ageAtIncidentInput = document.getElementById("age_at_incident");
+      const incidentMonthInput = document.getElementById("incident_month");
+      const incidentYearInput = document.getElementById("incident_year");
+
+      // Add an event listener to the form submission
+      form.addEventListener("submit", function (event) {
+        // Perform basic form validation
+        if (
+          !validateNumberInput(ageInput) ||
+          !validateNumberInput(policyDeductableInput) ||
+          !validateNumberInput(ageAtIncidentInput) ||
+          !validateNumberInput(incidentMonthInput) ||
+          !validateNumberInput(incidentYearInput)
+        ) {
+          event.preventDefault(); // Prevent form submission if validation fails
+        }
+      });
+
+      // Validate a number input field
+      function validateNumberInput(inputElement) {
+        const value = inputElement.value;
+        if (isNaN(value) || value.trim() === "") {
+          alert(`${inputElement.placeholder} must be a valid number.`);
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
