@@ -1,0 +1,9 @@
+.fetch-navigation {
+    text-align: center;
+    background-color: rgb(31, 31, 160);
+}
+
+.selected-box {
+    display: flex;
+    align-items: center;
+}
