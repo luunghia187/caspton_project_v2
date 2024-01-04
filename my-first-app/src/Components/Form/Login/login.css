@@ -1,0 +1,118 @@
+.login {
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.login::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: -200px;
+    right: -100px;
+    width: calc(100% + 200px);
+    height: 100%;
+    background-image: url("https://www.investopedia.com/thmb/H_pXhqJWpT-_B30c0vR_YoOzb2s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1012103542-a527d1f380024d5b87c02b255c1d4049.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.login_form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    background-color: #52504f;
+    color: black;
+    height: 350px;
+    width: 512px;
+    border-radius: 246px;
+
+    div {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 36px;
+        font-weight: normal;
+    }
+
+    p {
+        display: block;
+        height: 16px;
+        color: red;
+        font-size: 12px;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    .input-container {
+        input &:focus {
+            &::-webkit-input-placeholde {
+                position: absolute;
+                left: -9000px;
+            }
+        }
+
+        input {
+            outline: none;
+            margin-left: 5px;
+            border: 0;
+            border-bottom: 1px solid grey;
+            width: 270px;
+            font-size: 15px;
+            border-radius: 4px;
+        }
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .btn-login {
+        display: block;
+        cursor: pointer;
+        height: 50px;
+        width: 150px;
+        border-radius: 99px;
+
+        font-size: 18px;
+        border: 0;
+        background-color: #696965;
+
+        &:hover {
+            background-color: #ffcd77;
+        }
+    }
+
+    .register {
+        margin-top: 10px;
+
+        button {
+            cursor: pointer;
+            width: 100px;
+            height: 30px;
+            border-radius: 99px;
+            background-color: #fbff00;
+            font-size: 14px;
+            border: 0;
+
+            &:hover {
+                background-color: #ffcd77;
+            }
+        }
+
+        label {
+            font-size: 15px;
+        }
+    }
+}

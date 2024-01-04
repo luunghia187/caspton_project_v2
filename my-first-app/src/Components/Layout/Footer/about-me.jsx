@@ -68,10 +68,8 @@ class AboutUs extends Component {
                 <div className="bottom-footer">
                     <div className="container">
                         <nav className="footer-navigation">
-                            <Link to=''>Home</Link>
-                            <Link to='about'>About</Link>
-                            <Link to='contact'>Contact</Link>
-                            <Link to='wrapper'>Wrapper</Link>
+                            <Link to=''>Trang Chủ</Link>
+                            <Link to='about'>Yêu Cầu Bồi Thường</Link>
                         </nav>
 
                         <div className="colophon">Capston Project - University of Science and Technology Da Nang - Design By Luu Van Nghia.</div>

@@ -1,55 +1,78 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import FetchA from '../../Components/FetchData/UsingAxios/axios';
-import FetchF from '../../Components/FetchData/UsingFetch/fetch';
-import './Aboute.css'
+import './Aboute.css';
 
-function About() {
-  const [fetch, setFetch] = useState('FetchA');
+const InsuranceClaimForm = () => {
+  const [contractNumber, setContractNumber] = useState('');
+  const [customerAge, setCustomerAge] = useState('');
+  const [accidentDate, setAccidentDate] = useState('');
+  const [premiumAmount, setPremiumAmount] = useState('');
+  const [monthsSinceInsurance, setMonthsSinceInsurance] = useState('');
 
-  const handleChange = (event) => {
-    setFetch(event.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Xử lý logic gửi yêu cầu bồi thường bảo hiểm
+    console.log('Đã gửi yêu cầu bồi thường');
+    // Reset trường dữ liệu
+    setContractNumber('');
+    setCustomerAge('');
+    setAccidentDate('');
+    setPremiumAmount('');
+    setMonthsSinceInsurance('');
   };
 
-  let fetchComponent;
-
-  if (fetch === 'FetchA') {
-    fetchComponent = <FetchA />;
-  } else {
-    fetchComponent = <FetchF />;
-  }
-
   return (
-    <div>
-      <h1>This is the about page</h1>
-      <div className="selected-box">
-        <div>
-          <label>
-            Using Axios:
-            <input
-              type="checkbox"
-              value="FetchA"
-              checked={fetch === 'FetchA'}
-              onChange={handleChange}
-            />
-          </label>
+    <div className="insurance-claim-form">
+      <h2>Yêu cầu bồi thường bảo hiểm</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Số hợp đồng bảo hiểm:</label>
+          <input
+            type="text"
+            placeholder="ID hợp đồng"
+            value={contractNumber}
+            onChange={(e) => setContractNumber(e.target.value)}
+          />
         </div>
-        <div>
-          <label>
-            Using Fetch:
-            <input
-              type="checkbox"
-              value="FetchF"
-              checked={fetch === 'FetchF'}
-              onChange={handleChange}
-            />
-          </label>
+        <div className="form-group">
+          <label>Tuổi khách hàng:</label>
+          <input
+            type="text"
+            placeholder="Nhập tuổi của bạn"
+            value={customerAge}
+            onChange={(e) => setCustomerAge(e.target.value)}
+          />
         </div>
-      </div>
-      {fetchComponent}
-      <Link to="/">Back to home page</Link>
+        <div className="form-group">
+          <label>Ngày xảy ra tai nạn:</label>
+          <input
+            type="text"
+            placeholder="DD/MM/YYYY"
+            value={accidentDate}
+            onChange={(e) => setAccidentDate(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Mức miễn thường có khấu trừ:</label>
+          <input
+            type="text"
+            placeholder="Mức miễn thường"
+            value={premiumAmount}
+            onChange={(e) => setPremiumAmount(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Số tháng kể từ ngày đóng bảo hiểm:</label>
+          <input
+            type="text"
+            placeholder="Tính từ ngày kích hoạt hợp đồng"
+            value={monthsSinceInsurance}
+            onChange={(e) => setMonthsSinceInsurance(e.target.value)}
+          />
+        </div>
+        <button type="submit">Gửi yêu cầu</button>
+      </form>
     </div>
   );
-}
+};
 
-export default About;
+export default InsuranceClaimForm;
